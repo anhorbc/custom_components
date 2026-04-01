@@ -20,7 +20,7 @@ void SerialTextSensor::handle_char_(uint8_t c) {
     this->publish_();
     return;
   }
-  if (c == '\n') {
+  if (c == '\x1A') {
     if (!have_return_)
       this->publish_();
     this->have_return_ = false;
