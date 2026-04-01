@@ -15,12 +15,12 @@ void SerialTextSensor::loop() {
 }
 
 void SerialTextSensor::handle_char_(uint8_t c) {
-  if (c == '\r') {
+  if (c == '\x1A') {
     this->have_return_ = true;
     this->publish_();
     return;
   }
-  if (c == '\x1A') {
+  if (c == '\n') {
     if (!have_return_)
       this->publish_();
     this->have_return_ = false;
